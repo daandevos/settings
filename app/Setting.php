@@ -23,4 +23,12 @@ class Setting extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    /**
+     * The users that belong to the setting.
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }
