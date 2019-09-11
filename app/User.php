@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -36,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The settings that belong to the user.
+     */
+    public function settings()
+    {
+        return $this->belongsToMany('App\Setting');
+    }
 }
