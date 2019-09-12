@@ -25,10 +25,17 @@ class Category extends Model
     }
 
     /**
+     * Get the parent for the category.
+     */
+    public function parent() {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    /**
      * Get the children for the category.
      */
     public function children()
     {
-        return $this->hasMany('App\Category', 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 }
