@@ -6,6 +6,7 @@ use App\Setting;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSetting;
+use Illuminate\Http\RedirectResponse;
 
 class SettingController extends Controller
 {
@@ -35,9 +36,9 @@ class SettingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreSetting  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreSetting $request)
+    public function store(StoreSetting $request): RedirectResponse
     {
         $setting = new Setting([
             'name' => $request->input('name'),
