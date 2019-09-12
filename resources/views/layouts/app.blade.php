@@ -37,14 +37,16 @@
                             <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                         </li>
 
-                        @if (Auth::user()->hasRole('administrator'))
-                            <li class="nav-item">
-                                <a class="nav-link text-danger" href="{{ action('SettingController@create') }}">{{ __('Settings') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-danger" href="{{ action('CategoryController@index') }}">{{ __('Categories') }}</a>
-                            </li>
-                        @endif
+                        @auth
+                            @if (Auth::user()->hasRole('administrator'))
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="{{ action('SettingController@create') }}">{{ __('Settings') }}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger" href="{{ action('CategoryController@index') }}">{{ __('Categories') }}</a>
+                                </li>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->

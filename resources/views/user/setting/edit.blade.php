@@ -21,7 +21,9 @@
                         @csrf
 
                         @forelse ($categories as $category)
-                            <h2>{{ $category->name }}</h2>
+                            @if ($category->settings->isNotEmpty())
+                                <h2>{{ $category->name }}</h2>
+                            @endif
                             @foreach ($category->settings as $setting)
                                 @error('settings.' . $setting->id)
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -35,7 +37,9 @@
 
                             @if ($category['children']->isNotEmpty())
                                 @foreach ($category['children'] as $subCategory)
-                                    <h4>{{ $subCategory->name }}</h4>
+                                    @if ($subCategory->settings->isNotEmpty())
+                                        <h4>{{ $subCategory->name }}</h4>
+                                    @endif
 
                                     @foreach ($subCategory->settings as $setting)
                                         @error('settings.' . $setting->id)
