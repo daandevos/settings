@@ -36,7 +36,7 @@ class Setting extends Model
     /**
      * Get the setting value for the specified user.
      *
-     * @param App\User  $user
+     * @param \App\User  $user
      * @return null|int
      */
     public function getValueForUser(User $user): ?int
