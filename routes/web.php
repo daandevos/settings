@@ -20,11 +20,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('user/setting', 'UserSettingController@edit');
-    Route::patch('user/setting', 'UserSettingController@update');
+    Route::get('users/setting', 'UserSettingController@edit');
+    Route::patch('users/setting', 'UserSettingController@update');
 
     Route::middleware(['role:administrator'])->group(function () {
-        Route::post('setting', 'SettingController@store');
-        Route::get('setting/create', 'SettingController@create');
+        Route::get('settings/create', 'SettingController@create');
+        Route::post('settings', 'SettingController@store');
+
+        Route::resource('categories', CategoryController::class);
     });
 });
